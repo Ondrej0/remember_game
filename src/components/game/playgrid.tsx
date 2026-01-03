@@ -76,12 +76,25 @@ function shuffleNumbers(numbers: number[]): number[] {
 
   return (
     <> 
-    <div className='display-flex w-[90vw] bg-white rounded shadow-md p-10 m-5'><p className='font-medium text-4xl '>Points - {matchesFound}____ Card 1 - {firstCard}____ Card 2 - {secondCard}</p></div>
-        <div className="grid w-[90vw] h-[90vh] grid-cols-2 grid-rows-2 gap-2 p-4 bg-white rounded shadow-md">
-            {preparedNumbers.map((number, index) => (   
-                <MemoryCard key={index} number={number} onClick={() => handleCardClick(number)}/>
-            ))}
-        </div>
+    <div className="w-[90vw] bg-slate-800/80 backdrop-blur rounded-xl shadow-lg p-6 m-6 border border-slate-700">
+  <p className="text-slate-200 text-2xl md:text-3xl font-semibold tracking-wide flex flex-wrap gap-4">
+    <span>Points: <span className="text-emerald-400">{matchesFound}</span></span>
+    <span className="text-slate-400">|</span>
+    <span>Card 1: <span className="text-indigo-400">{firstCard ?? '-'}</span></span>
+    <span className="text-slate-400">|</span>
+    <span>Card 2: <span className="text-indigo-400">{secondCard ?? '-'}</span></span>
+  </p>
+</div>
+<div className="grid w-[90vw] h-[80vh] aspect-square grid-cols-2 grid-rows-2 gap-6 p-6 bg-slate-800/70 backdrop-blur rounded-2xl shadow-xl border border-slate-700">
+  {preparedNumbers.map((number, index) => (   
+    <MemoryCard
+      key={index}
+      number={number}
+      onClick={() => handleCardClick(number)}
+    />
+  ))}
+</div>
+
     </>
    
   )

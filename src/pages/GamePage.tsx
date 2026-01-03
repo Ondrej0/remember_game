@@ -3,7 +3,7 @@ import PlayGrid from '../components/game/playgrid'
 
 export default function GamePage() {
   return (
-    <div className="game-page width-full h-lvh flex flex-col items-center justify-center p-4 bg-blue-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-zinc-900 flex flex-col items-center">
       <PlayGrid />
     </div>
   )
