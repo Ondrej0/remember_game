@@ -7,7 +7,7 @@ type MemoryCardProps = {
 }
 
 //Exporting MemoryCard component
-export default function MemoryCard({ number }: MemoryCardProps) {
+export default function MemoryCard({ number, onClick }: MemoryCardProps) {
 
   const [shouldShowLabel, setShouldShowLabel] = useState<boolean>(true);
 
@@ -17,10 +17,15 @@ export default function MemoryCard({ number }: MemoryCardProps) {
     }, 2000);
   }, []);
 
+  function handleClick() {
+    setShouldShowLabel(true);
+    onClick();
+  }
+
 
 
     return (
-    <div className="bg-blue-200 hover:bg-blue-300 rounded-lg shadow-md p-4 flex flex-col items-center justify-center cursor-pointer " onClick={() => setShouldShowLabel(true)}>
+    <div className="bg-blue-200 hover:bg-blue-300 rounded-lg shadow-md p-4 flex flex-col items-center justify-center cursor-pointer " onClick={handleClick}>
         <p className="text-8xl font-extrabold">{shouldShowLabel ? number : '?'}</p>
     </div>
     )
