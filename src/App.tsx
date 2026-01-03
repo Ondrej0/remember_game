@@ -1,6 +1,5 @@
-import { useState } from 'react'
+
 import GamePage from './pages/GamePage'
-import './App.css'
 
 function App() {
 

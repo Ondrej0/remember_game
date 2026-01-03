@@ -1,4 +1,5 @@
 import { useState, useEffect} from 'react'
+import MemoryCard from './MemoryCard'
 
 // PlayGrid Component where all game logic happens
 export default function PlayGrid() {
@@ -11,6 +12,10 @@ const [numberOfColumns, setNumberOfColumns] = useState<number>(2);
 // Setting up state variables for the numbers to be displayed on the cards
 const [numbers, setNumbers] = useState<number[]>([1, 2]);
 const [preparedNumbers, setPreparedNumbers] = useState<number[]>([]);
+
+useEffect(() => {
+  prepareNumbersForCards();
+}, []);
 
 // Function to prepare numbers for the memory cards
 function prepareNumbersForCards() {
@@ -32,8 +37,13 @@ function shuffleNumbers(numbers: number[]): number[] {
 }
 
   return (
-    <div className="display-grid grid-cols-2 grid-rows-2 gap-2 p-4 bg-white rounded shadow-md">
-      <h2 className="text-2xl font-semibold">This is the Play Grid Component</h2>
-    </div>
+    <> 
+        <div className="grid w-[90vw] h-[90vh] grid-cols-2 grid-rows-2 gap-2 p-4 bg-white rounded shadow-md">
+            {preparedNumbers.map((number, index) => (   
+                <MemoryCard key={index} number={number} />
+            ))}
+        </div>
+    </>
+   
   )
 }

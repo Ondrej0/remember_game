@@ -1,8 +1,27 @@
+import { useState, useEffect } from 'react'
 
-export default function MemoryCard() {
-  return (
-    <div className="memory-card">
-      <h2 className="text-2xl font-semibold">This is the Memory Card Component</h2>
+//Settiung up props for MemoryCard component
+type MemoryCardProps = {
+  number: number
+}
+
+//Exporting MemoryCard component
+export default function MemoryCard({ number }: MemoryCardProps) {
+
+  const [shouldShowLabel, setShouldShowLabel] = useState<boolean>(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShouldShowLabel(false);
+    }, 2000);
+  }, []);
+
+
+
+    return (
+    <div className="bg-blue-200 hover:bg-blue-300 rounded-lg shadow-md p-4 flex flex-col items-center justify-center cursor-pointer " onClick={() => setShouldShowLabel(true)}>
+        <p className="text-4xl font-extrabold">{shouldShowLabel ? number : '?'}</p>
     </div>
-  )
+    )
+  
 }
