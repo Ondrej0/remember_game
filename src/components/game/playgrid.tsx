@@ -13,6 +13,9 @@ const [numberOfColumns, setNumberOfColumns] = useState<number>(2);
 const [numbers, setNumbers] = useState<number[]>([1, 2]);
 const [preparedNumbers, setPreparedNumbers] = useState<number[]>([]);
 
+const [firstCard, setFirstCard] = useState<number | null>(null);
+const [secondCard, setSecondCard] = useState<number | null>(null);
+
 useEffect(() => {
   prepareNumbersForCards();
 }, []);
@@ -40,7 +43,7 @@ function shuffleNumbers(numbers: number[]): number[] {
     <> 
         <div className="grid w-[90vw] h-[90vh] grid-cols-2 grid-rows-2 gap-2 p-4 bg-white rounded shadow-md">
             {preparedNumbers.map((number, index) => (   
-                <MemoryCard key={index} number={number} />
+                <MemoryCard key={index} number={number} onClick={() => setFirstCard(number)}/>
             ))}
         </div>
     </>

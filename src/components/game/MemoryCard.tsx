@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 
 //Settiung up props for MemoryCard component
 type MemoryCardProps = {
-  number: number
+  number: number;
+  onClick: () => void;
 }
 
 //Exporting MemoryCard component
@@ -20,7 +21,7 @@ export default function MemoryCard({ number }: MemoryCardProps) {
 
     return (
     <div className="bg-blue-200 hover:bg-blue-300 rounded-lg shadow-md p-4 flex flex-col items-center justify-center cursor-pointer " onClick={() => setShouldShowLabel(true)}>
-        <p className="text-4xl font-extrabold">{shouldShowLabel ? number : '?'}</p>
+        <p className="text-8xl font-extrabold">{shouldShowLabel ? number : '?'}</p>
     </div>
     )
   
